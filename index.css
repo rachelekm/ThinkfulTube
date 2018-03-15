@@ -44,6 +44,11 @@ button {
   text-align: center;
 }
 
+.searchResultNumber {
+  text-align: left;
+  font-family: Arial;
+}
+
 .col-1 {
   border-radius: 2px;
   width: 100%;

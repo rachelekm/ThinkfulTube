@@ -1,6 +1,8 @@
 const YouTube_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 function displaySearchData(data, status){
+  console.log(data);
+  $('.results').html(`<p class="searchResultNumber" aria-live="assertive">Search Results: ${data.items.length} videos</p>`);
   data.items.forEach(item => {
     let videoURL = `http://www.youtube.com/watch?v=${item.id.videoId}`;
     let thumbnailURL = item.snippet.thumbnails.medium.url;
