@@ -2,11 +2,14 @@ const YouTube_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 function displaySearchData(data, status){
   console.log(data);
-  $('.results').html(`<p class="searchResultNumber" aria-live="assertive">Search Results: ${data.items.length} videos</p>`);
+  let searchTerm = $('.js-query').val();
+  $('.results').html(`<p class="searchResultNumber" aria-live="assertive">Search Results for ${searchTerm}: ${data.items.length} videos</p>`);
   data.items.forEach(item => {
     let videoURL = `http://www.youtube.com/watch?v=${item.id.videoId}`;
     let thumbnailURL = item.snippet.thumbnails.medium.url;
-    $('.results').append(`<a href="${videoURL}"><img src="${thumbnailURL}" class="col-1 col-m-3"></a>`);
+    let videoTitle = item.snippet.title;
+    let videoDescription = item.snippet.description;
+    $('.results').append(`<a href="${videoURL}" title="Link to Youtube for Video Titled, ${videoTitle}"><img src="${thumbnailURL}" class="col-1 col-m-3" alt="${videoDescription}"></a>`);
   });
 }
 
